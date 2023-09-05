@@ -71,8 +71,6 @@ df.groupby("group").agg({"Purchase": "mean"})
 # H1: Normal dağılım varsayımı sağlanmamaktadır
 # p < 0.05 H0 RED
 # p > 0.05 H0 REDDEDİLEMEZ
-# Test sonucuna göre normallik varsayımı kontrol ve test grupları için sağlanıyor mu ?
-# Elde edilen p-valuedeğerlerini yorumlayınız.
 
 test_stat, pvalue = shapiro(df.loc[df["group"] == "control", "Purchase"])
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
@@ -85,8 +83,6 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 # H1: Varyanslarhomojen Değildir.
 # p < 0.05 H0 RED
 # p > 0.05 H0 REDDEDİLEMEZ
-# Kontrol ve test grubu için varyans homojenliğinin sağlanıp sağlanmadığını Purchase değişkeni üzerinden test ediniz.
-# Test sonucuna göre normallik varsayımı sağlanıyor mu? Elde edilen p-valuedeğerlerini yorumlayınız.
 
 test_stat, pvalue = levene(df.loc[df["group"] == "control", "Purchase"],
                            df.loc[df["group"] == "test", "Purchase"])
@@ -107,8 +103,7 @@ test_stat, pvalue = ttest_ind(df.loc[df["group"] == "control", "Purchase"],
 
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
-# Adım 3: Test sonucunda elde edilen p_valuedeğerini göz önünde bulundurarak kontrol ve test grubu satın alma
-# ortalamaları arasında istatistiki olarak anlamlı bir fark olup olmadığını yorumlayınız.
+
 
 # p-value=0.3493
 # HO reddedilemez. Kontrol ve test grubu satın alma ortalamaları arasında istatistiksel olarak anlamlı farklılık yoktur.
