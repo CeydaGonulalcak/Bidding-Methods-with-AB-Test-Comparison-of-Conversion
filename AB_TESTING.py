@@ -103,8 +103,6 @@ test_stat, pvalue = ttest_ind(df.loc[df["group"] == "control", "Purchase"],
 
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
-
-
 # p-value=0.3493
 # HO cannot be rejected. There is no statistically significant difference between the purchasing averages of the control and test groups.
 
