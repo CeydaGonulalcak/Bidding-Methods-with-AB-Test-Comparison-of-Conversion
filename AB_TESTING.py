@@ -66,36 +66,36 @@ df.groupby("group").agg({"Purchase": "mean"})
 # TASK 3: Performing Hypothesis Testing
 #####################################################
 
-# Normallik Varsayımı :
-# H0: Normal dağılım varsayımı sağlanmaktadır.
-# H1: Normal dağılım varsayımı sağlanmamaktadır
+# Normality Assumption :
+# H0: Normal distribution assumption is provided.
+# H1: Normal distribution assumption not provided.
 # p < 0.05 H0 RED
-# p > 0.05 H0 REDDEDİLEMEZ
+# p > 0.05 H0 CANNOT BE REJECTED
 
 test_stat, pvalue = shapiro(df.loc[df["group"] == "control", "Purchase"])
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 # p-value=0.5891
-# HO reddedilemez. Control grubunun değerleri normal dağılım varsayımını sağlamaktadır.
+# HO cannot be rejected. The values ​​of the control group provide the assumption of normal distribution.
 
 
-# Varyans Homojenliği :
-# H0: Varyanslarhomojendir.
-# H1: Varyanslarhomojen Değildir.
+# Variance Homogeneity :
+# H0: Variances are homogeneous.
+# H1: Variances are not homogeneous.
 # p < 0.05 H0 RED
-# p > 0.05 H0 REDDEDİLEMEZ
+# p > 0.05 H0 CANNOT BE REJECTED
 
 test_stat, pvalue = levene(df.loc[df["group"] == "control", "Purchase"],
                            df.loc[df["group"] == "test", "Purchase"])
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 # p-value=0.1083
-# HO reddedilemez. Control ve Test grubunun değerleri varyans homejenliği varsayımını sağlamaktadır.
-# Varyanslar Homojendir.
+# HO cannot be rejected. The values ​​of the Control and Test groups provide the assumption of variance homogeneity.
+# Variances are Homogeneous.
 
 
-# Varsayımlar sağlandığı için bağımsız iki örneklem t testi (parametrik test) yapılmaktadır.
-# H0: M1 = M2 (Kontrol grubu ve test grubu satın alma ortalamaları arasında ist. ol.anl.fark yoktur.)
-# H1: M1 != M2 (Kontrol grubu ve test grubu satın alma ortalamaları arasında ist. ol.anl.fark vardır)
-# p<0.05 HO RED , p>0.05 HO REDDEDİLEMEZ
+# Since the assumptions are provided, an independent two-sample t-test (parametric test) is performed.
+# H0: M1 = M2 (There is no statistically significant difference between the purchasing averages of the control group and test group.)
+# H1: M1 != M2 (There is a statistically significant difference between the purchasing averages of the control group and the test group.)
+# p<0.05 HO RED , p>0.05 HO CANNOT BE REJECTED
 
 test_stat, pvalue = ttest_ind(df.loc[df["group"] == "control", "Purchase"],
                               df.loc[df["group"] == "test", "Purchase"],
@@ -106,6 +106,6 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
 
 # p-value=0.3493
-# HO reddedilemez. Kontrol ve test grubu satın alma ortalamaları arasında istatistiksel olarak anlamlı farklılık yoktur.
+# HO cannot be rejected. There is no statistically significant difference between the purchasing averages of the control and test groups.
 
 
