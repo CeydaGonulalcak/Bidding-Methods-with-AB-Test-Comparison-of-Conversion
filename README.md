@@ -1,4 +1,5 @@
 # Bidding-Methods-with-AB-Test-Comparison-of-Conversion
+It is known that in this project, bombabomba.com tested Facebook's "maximum bid" feature and offered it as an alternative to the "average bid" feature. The client decided to run an A/B test to ensure that the average bid was higher than the maximum bid. The test continued for 1 month and now bombabomba.com is waiting for your help to analyze the results. Since the ultimate success criterion in this project is acquisition, statistical testing should focus on this metric.
 
 # Business Problem
 Facebook recently introduced what's called "maximum bidding". A new bidding type as an alternative to the bidding type
